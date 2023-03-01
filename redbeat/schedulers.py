@@ -460,7 +460,12 @@ class RedBeatScheduler(Scheduler):
     def close(self):
         if self.lock:
             logger.debug('beat: Releasing Lock')
-            self.lock.release()
+            try:
+                self.lock.release()
+            except redis.exceptions.LockError:
+                # handle locks that are no longer owned or non-existent
+                pass
+
             self.lock = None
         super(RedBeatScheduler, self).close()
 
