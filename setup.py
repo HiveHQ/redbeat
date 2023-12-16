@@ -24,7 +24,7 @@ setup(
     ],
     install_requires=[
         'redis>=3.2',
-        'celery @ git+https://github.com/HiveHQ/celery.git#egg=celery',
+        'celery @ git+https://github.com/HiveHQ/celery.git@py37-compat#egg=celery',
         'python-dateutil>=2.4.2',
         'tenacity==7.0.0',
     ],
